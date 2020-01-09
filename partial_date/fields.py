@@ -3,15 +3,15 @@ from __future__ import unicode_literals
 import datetime
 import re
 
-from django.core import  exceptions
+from django.core import exceptions
 from django.db import models
-from django.utils import six
 from django.utils.translation import ugettext_lazy as _
 
 
 partial_date_re = re.compile(
     r'^(?P<year>\d{4})(?:-(?P<month>\d{1,2}))?(?:-(?P<day>\d{1,2}))?$'
 )
+
 
 class PartialDate(object):
     YEAR = 0
@@ -28,7 +28,7 @@ class PartialDate(object):
     }
 
     def __init__(self, date, precision=DAY):
-        if isinstance(date, six.text_type):
+        if isinstance(date, str):
             date, precision =  PartialDate.parseDate(date)
 
         self.date = date
@@ -89,7 +89,7 @@ class PartialDate(object):
 
         try:
             match_dict = match.groupdict()
-            kw = {k: int(v) if v else 1 for k, v in six.iteritems(match_dict)}
+            kw = {k: int(v) if v else 1 for k, v in iter(match_dict.items())}
 
             precision = PartialDate.DAY if match_dict["day"] else \
                         PartialDate.MONTH if match_dict["month"] else \
@@ -144,7 +144,7 @@ class PartialDateField(models.Field):
         if isinstance(value, PartialDate):
             return value
 
-        if isinstance(value, six.text_type):
+        if isinstance(value, str):
             return PartialDate(value)
 
         raise exceptions.ValidationError(
