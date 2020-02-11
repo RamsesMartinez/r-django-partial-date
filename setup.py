@@ -36,9 +36,9 @@ setup(
     version='1.3.0',
     description='Django custom model field for partial dates with the form YYYY, YYYY-MM, YYYY-MM-DD',
     long_description=long_description,
-    url='https://github.com/RamsesMartinez/r-django-partial-date',
-    author='Ramses Martinez',
     author_email='ramses.mtz96@gmail.com',
+    author='Ramses Martinez',
+    url='https://github.com/RamsesMartinez/r-django-partial-date',
     license='MIT',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
