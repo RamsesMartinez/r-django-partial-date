@@ -1,9 +1,9 @@
+import os
 import sys
 
 from setuptools import setup
 
 from codecs import open
-from os import path
 
 CURRENT_PYTHON = sys.version_info[:2]
 REQUIRED_PYTHON = (3, 6)
@@ -26,16 +26,26 @@ version of Python.
 """.format(*(REQUIRED_PYTHON + CURRENT_PYTHON)))
     sys.exit(1)
 
-here = path.abspath(path.dirname(__file__))
+here = os.path.abspath(os.path.dirname(__file__))
 
-with open(path.join(here, 'README.md'), encoding='utf-8') as f:
+
+def read(fname):
+    path = os.path.join(os.path.dirname(__file__), fname)
+    try:
+        file = open(path, encoding='utf-8')
+    except TypeError:
+        file = open(path)
+    return file.read()
+
+
+with open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
     name='r-django-partial-date',
-    version='1.3.0',
+    version='1.3.1',
     description='Django custom model field for partial dates with the form YYYY, YYYY-MM, YYYY-MM-DD',
-    long_description=long_description,
+    long_description=read('README.rst'),
     author_email='ramses.mtz96@gmail.com',
     author='Ramses Martinez',
     url='https://github.com/RamsesMartinez/r-django-partial-date',
