@@ -43,7 +43,7 @@ with open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='r-django-partial-date',
-    version='1.3.1',
+    version='1.3.1.1',
     description='Django custom model field for partial dates with the form YYYY, YYYY-MM, YYYY-MM-DD',
     long_description=read('README.rst'),
     author_email='ramses.mtz96@gmail.com',

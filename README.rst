@@ -15,7 +15,7 @@ Install the package
 
 .. code:: python
 
-    pip install django_partial_date
+    pip install r-django-partial-date
 
 * partial_date.PartialDateField
 
